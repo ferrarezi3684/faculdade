@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Formulário para prova</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#telefone').mask('(00) 0000-0000');
+			$('#cep').mask('00000-000');
+			$('#estado').mask('SS');
+		});
+	</script>
+    <script>
+        $(document).ready(function() {
+            var caminhoImagem = "C:/Users/thiag/Documents/foto.jpg";
+            $("#imagem").append("<img>");
+            $("#imagem img").attr("src", caminhoImagem);
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#botao-atualizar").click(function() {
+                $("#meu-formulario").submit();
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <div id="imagem"></div>
+	<form id="meu-formulario">
+
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" name="nome"><br><br>
+
+		<label for="telefone">Telefone:</label>
+		<input type="text" id="telefone" name="telefone"><br><br>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email"><br><br>
+
+		<label for="curso">Curso:</label>
+		<select id="curso" name="curso">
+			<option value="webdesenv">Web Desenvolvimento</option>
+			<option value="banco">Banco de Dados</option>
+			<option value="laravel">Laravel</option>
+		</select><br><br>
+
+		<label for="cep">CEP:</label>
+		<input type="text" id="cep" name="cep"><br><br>
+
+		<label for="endereco">Endereço:</label>
+		<input type="text" id="endereco" name="endereco"><br><br>
+
+		<label for="bairro">Bairro:</label>
+		<input type="text" id="bairro" name="bairro"><br><br>
+
+		<label for="cidade">Cidade:</label>
+		<input type="text" id="cidade" name="cidade"><br><br>
+
+		<label for="estado">Estado:</label>
+		<input type="text" id="estado" name="estado"><br><br>
+
+		<button type="button" id="botao-atualizar">Atualizar</button>
+	</form>
+</body>
+</html>
