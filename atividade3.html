@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Atividade 3 </title>
+    <script>
+      // Função para definir a classe convidado com os campos do formulário
+      function Convidado(nome, sobrenome, email, telefone) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.telefone = telefone;
+      }
+      
+      // Função para inserir um convidado na lista
+      function inserirConvidado() {
+        var nome = document.getElementById("nome").value;
+        var sobrenome = document.getElementById("sobrenome").value;
+        var email = document.getElementById("email").value;
+        var telefone = document.getElementById("telefone").value;
+        
+        var convidado = new Convidado(nome, sobrenome, email, telefone);
+        
+        var select = document.getElementById("lista-convidados");
+        var option = document.createElement("option");
+        option.text = convidado.nome + " " + convidado.sobrenome + " | E-mail: " + convidado.email + " | Telefone: " + convidado.telefone;
+        select.add(option);
+        document.getElementById("nome").value = "";
+        document.getElementById("sobrenome").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("telefone").value = "";
+      }
+      
+      // Função para remover um convidado da lista
+      function removerConvidado() {
+        var select = document.getElementById("lista-convidados");
+        var selectedIndex = select.selectedIndex;
+        if (selectedIndex >= 0) {
+          select.remove(selectedIndex);
+        }
+      }
+      
+      // Função para limpar o formulário
+      function limparFormulario() {
+        document.getElementById("nome").value = "";
+        document.getElementById("sobrenome").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("telefone").value = "";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Lista de Convidados</h1>
+    
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required><br>
+      
+      <label for="sobrenome">Sobrenome:</label>
+      <input type="text" id="sobrenome" name="sobrenome" required><br>
+      
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required><br>
+      
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" required><br>
+      
+      <button type="button" onclick="inserirConvidado()">Inserir Convidado</button>
+      <button type="button" onclick="removerConvidado()">Remover Convidado Selecionado</button>
+      <button type="button" onclick="limparFormulario()">Limpar Formulário</button>
+      
+      <br><br>
+      
+      <label for="lista-convidados">Lista de Convidados:</label>
+      <select id="lista-convidados" name="lista-convidados"></select>
+    </form>
+  </body>
+</html>

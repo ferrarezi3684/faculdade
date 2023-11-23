@@ -1,0 +1,10 @@
+Nome: Aluno_92, Disciplina: Disciplina_4, Situação: Aprovado
+Nome: Aluno_10, Disciplina: Disciplina_5, Situação: Aprovado
+Nome: Aluno_51, Disciplina: Disciplina_1, Situação: Aprovado
+Nome: Aluno_59, Disciplina: Disciplina_2, Situação: Aprovado
+Nome: Aluno_29, Disciplina: Disciplina_3, Situação: Aprovado
+Nome: Aluno_27, Disciplina: Disciplina_2, Situação: Aprovado
+Nome: Aluno_66, Disciplina: Disciplina_5, Situação: Aprovado
+Nome: Aluno_100, Disciplina: Disciplina_2, Situação: Aprovado
+Nome: Aluno_39, Disciplina: Disciplina_5, Situação: Aprovado
+Nome: Aluno_40, Disciplina: Disciplina_4, Situação: Aprovado

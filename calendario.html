@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calendário</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .destacado {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendário</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Domingo</th>
+                <th>Segunda</th>
+                <th>Terça</th>
+                <th>Quarta</th>
+                <th>Quinta</th>
+                <th>Sexta</th>
+                <th>Sábado</th>
+            </tr>
+        </thead>
+        <tbody id="calendario">
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <form>
+        <label for="data1">Data 1:</label>
+        <input type="date" id="data1" name="data1"><br>
+        <br>
+        <label for="data2">Data 2:</label>
+        <input type="date" id="data2" name="data2"><br>
+        <br>
+        <br>
+        <button type="button" onclick="destacarData()">Destacar Data</button>
+        <button type="button" onclick="limparDestaque()">Limpar Destaque</button>
+        <button type="button" onclick="calcularDiferenca()">Diferença</button>
+        <button type="button" onclick="mudarCor()">Alterar Cor</button>
+    </form>
+    <td></td>
+
+    <script>
+        function criarCalendario() {
+            // Obter a referência ao elemento tbody
+            const tbody = document.getElementById('calendario');
+
+            // Obter as datas inicial e final do mês atual
+            const dataAtual = new Date();
+            const dataInicial = new Date(dataAtual.getFullYear(), dataAtual.getMonth(), 1);
+            const dataFinal = new Date(dataAtual.getFullYear(), dataAtual.getMonth() + 1, 0);
+
+            // Criar as células do calendário
+            let dia = 1;
+            for (let i = 0; i < 5; i++) {
+                const linha = document.createElement('tr');
+                for (let j = 0; j < 7; j++) {
+                    const celula = document.createElement('td');
+                    if (i === 0 && j < dataInicial.getDay()) {
+                        celula.textContent = '';
+                    } else if (dia > dataFinal.getDate()) {
+                        celula.textContent = '';
+                    } else {
+                        celula.textContent = dia;
+                        dia++;
+                    }
+                    linha.appendChild(celula);
+                }
+                tbody.appendChild(linha);
+            }
+        }
+        //função para criar o destaque      
+        function destacarData() {
+            limparDestaque();
+            const data1 = document.getElementById('data1').value;
+            const dia1 = parseInt(data1.split('-')[2]);
+
+
+            const celulas = document.getElementsByTagName('td');
+            for (let i = 0; i < celulas.length; i++) {
+                if (celulas[i].innerText == dia1) {
+                    celulas[i].classList.add('destacado');
+                }
+
+            }
+        }
+        //função para limpar o destaque
+        function limparDestaque() {
+            const celulasDestacadas = document.querySelectorAll('.destacado');
+            celulasDestacadas.forEach(celula => celula.classList.remove('destacado'));
+        }
+        
+
+        function calcularDiferenca() {
+            // Obter os valores das datas do formulário
+            let data1 = new Date(document.getElementById("data1").value);
+            let data2 = new Date(document.getElementById("data2").value);
+
+            // Calcular a diferença em milissegundos
+            let diferenca = Math.abs(data2 - data1);
+            
+
+            // Calcular o número de dias
+            const umDia = 1000 * 60 * 60 * 24;
+            let numDias = Math.floor(diferenca / umDia);
+
+            // Exibir o resultado em um alerta na tela
+            alert("A diferença entre as datas é de " + numDias + " dias.");
+        }
+
+
+        function mudarCor() {
+  // Obter as datas selecionadas
+  let data1 = new Date(document.getElementById("data1").value);
+  let data2 = new Date(document.getElementById("data2").value);
+  const data1dia = document.getElementById('data1').value;
+  const data2dia = document.getElementById('data2').value;
+  let dia1 = parseInt(data1dia.split('-')[2]);
+  let dia2 = parseInt(data2dia.split('-')[2]);
+
+  // Verificar se as datas são válidas
+  if (isNaN(data1.getTime()) || isNaN(data2.getTime())) {
+    alert("Selecione duas datas válidas para mudar a cor!");
+    return;
+  }
+
+  // Definir a cor laranja e verde
+  let corLaranja = "#FFA500";
+  let corVerde = "#008000";
+
+  // Iterar por todas as células da tabela
+  let tabela = document.getElementById("calendario");
+  let celulas = tabela.getElementsByTagName("td");
+  for (let i = 0; i < celulas.length; i++) {
+    // Obter a data da célula atual
+    let dataCelula = celulas[i].innerHTML;
+
+    // Verificar se a data da célula está dentro do intervalo selecionado
+    let dataAtual = new Date();
+    let anoAtual = dataAtual.getFullYear();
+    let mesAtual = dataAtual.getMonth();
+    let dataInicio = new Date(anoAtual, mesAtual, data1.getDate());
+    let dataFim = new Date(anoAtual, mesAtual, data2.getDate());
+    if (dataCelula > dataInicio.getDate() && dataCelula <= dataFim.getDate()) {
+      celulas[i].style.backgroundColor = corLaranja;
+    } 
+    if (celulas[i].innerText == dia1) {
+        celulas[i].style.backgroundColor = corVerde;
+    }
+    if (celulas[i].innerText == dia2) {
+        celulas[i].style.backgroundColor = corVerde;
+    }
+
+  }
+}
+    //função para criar o calendário
+    criarCalendario();
+    </script>
+</body>
+</html>

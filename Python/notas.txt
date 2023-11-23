@@ -1,0 +1,4 @@
+Nome: thiago
+Notas: AV1 = 10.0, AV2 = 7.0, AV3 = 5.0
+Média: 7.33
+

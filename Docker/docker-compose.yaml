@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db_nome_sobrenome:
+    image: mongo
+    container_name: db_nome_sobrenome
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: thiagoferrarezi
+      MONGO_INITDB_ROOT_PASSWORD: Pr@m@ve
+    ports:
+      - "27020:27017"
+    volumes:
+      - vol_nome_sobrenome:/data/db
+
+volumes:
+  vol_nome_sobrenome:
